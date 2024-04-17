@@ -1,0 +1,34 @@
+{
+  "blogs": [
+    {
+      "title": "Example Title 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "id": "21d6"
+    },
+    {
+      "title": "Example Title 2",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "id": "0f2d"
+    },
+    {
+      "title": "Example Title 3",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "id": "3088"
+    },
+    {
+      "id": "bfe9",
+      "title": "News for Jenin ",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat."
+    },
+    {
+      "id": "cdb5",
+      "title": "News For Tullkarm",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat."
+    },
+    {
+      "id": "aa92",
+      "title": "Nwes for Nablus ",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat."
+    }
+  ]
+}

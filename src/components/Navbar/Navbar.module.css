@@ -1,0 +1,59 @@
+
+  .menu-icon {
+    display: none;
+  }
+  .icon{
+    color: white;
+  }
+  .logo {
+    color: white;
+    position: absolute;
+    left: 2rem;
+  }
+  .navbar {
+    background-color: #32325d;
+    height: 5rem;
+    display: flex;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+  }
+ 
+  .navbar_content {
+    line-height: 17px;
+    display: flex;
+    gap: 50px;
+  }
+  
+
+  .navbar a {
+    color: #8789cd;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 21px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  @media (max-width: 768px) {
+   
+    .navbar_content {
+      display: block;
+      position: absolute;
+      right: 0;
+    }
+    .navbar_content {
+      display: none; /* Hide menu content by default on small screens */
+    }
+  
+    /* Adjustments for menu icon */
+    .menu-icon {
+      display: block; /* Show menu icon on small screens */
+      cursor: pointer;
+      padding: 10px;
+    }
+    .navbar_content {
+      display: none; /* Hide menu content by default on small screens */
+    }
+
+  }
+  /* Media Query for small screens */
+  
