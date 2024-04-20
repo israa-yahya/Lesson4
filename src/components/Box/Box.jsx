@@ -5,11 +5,11 @@ import styles from "./Box.module.css"; // Import CSS module
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons"; // Import the thumbs-up and thumbs-down icons
 import { faTrash } from "@fortawesome/free-solid-svg-icons"; // Import the trash icon
-import { deleteBlog } from '../../services/Blogs';
+import BlogsServices from './../../services/Blogs';
 
 const Box = ({ id, title, description, liked, onLike, onUnlike }) => {
   const handleDelete = () => {
-    deleteBlog(id); // Call deleteBlog function with post id
+    BlogsServices.deleteBlog(id); // Call deleteBlog function with post id
   }; return (
     <div className={styles.blog_item}>
       {/* <img src={imageUrl} alt={title} className={styles.image} /> */}

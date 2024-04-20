@@ -1,9 +1,10 @@
+// ContentFromBoxes.js
 import React, { useState, useEffect } from "react";
 import Box from "./../Box/Box";
 import styles from "./contentFromBoxes.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import { fetchData } from './API/index'; // Correct import path
+import BlogsServices from "../../services/Blogs";
 
 const ContentFromBoxes = () => {
   const [blogs, setBlogs] = useState([]);
@@ -15,7 +16,9 @@ const ContentFromBoxes = () => {
   useEffect(() => {
     const fetchDataAsync = async () => {
       try {
-        await fetchData(setTotalLiked, setTotalUnliked, setBlogs);
+        const fetchedBlogs = await BlogsServices.fetchData();
+        setBlogs(fetchedBlogs);
+        updateTotals(fetchedBlogs);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -24,7 +27,13 @@ const ContentFromBoxes = () => {
     };
 
     fetchDataAsync();
-  }, []); // Empty dependency array means this effect runs only once when the component mounts
+  }, []);
+
+  const updateTotals = (blogs) => {
+    const likedCount = blogs.reduce((count, blog) => count + (blog.liked ? 1 : 0), 0);
+    setTotalLiked(likedCount);
+    setTotalUnliked(blogs.length - likedCount);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -33,25 +42,6 @@ const ContentFromBoxes = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  const handleLike = (index) => {
-    const updatedBlogs = [...blogs];
-    if (!updatedBlogs[index].liked) {
-      updatedBlogs[index].liked = true;
-      setTotalLiked(totalLiked + 1);
-      setTotalUnliked(totalUnliked - 1);
-      setBlogs(updatedBlogs);
-    }
-  };
-
-  const handleUnlike = (index) => {
-    const updatedBlogs = [...blogs];
-    if (updatedBlogs[index].liked) {
-      updatedBlogs[index].liked = false;
-      setTotalLiked(totalLiked - 1);
-      setTotalUnliked(totalUnliked + 1);
-      setBlogs(updatedBlogs);
-    }
-  };
 
   return (
     <>
@@ -64,15 +54,15 @@ const ContentFromBoxes = () => {
         </div>
       </div>
       <section className={styles.content}>
-        {blogs.map((blog, index) => (
+        {blogs.map((blog) => (
           <Box
-            key={index}
+            key={blog.id}
             id={blog.id}
             title={blog.title}
             description={blog.description}
             liked={blog.liked}
-            onLike={() => handleLike(index)}
-            onUnlike={() => handleUnlike(index)}
+            onLike={() => BlogsServices.handleLike(blog.id)}
+            onUnlike={() => BlogsServices.handleUnLike(blog.id)} 
           />
         ))}
       </section>

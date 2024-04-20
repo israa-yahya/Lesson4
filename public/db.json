@@ -3,32 +3,44 @@
     {
       "title": "Example Title 1",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
-      "id": "21d6"
-    },
-    {
-      "title": "Example Title 2",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
-      "id": "0f2d"
+      "id": "21d6",
+      "liked": 0,
+      "unliked": 1
     },
     {
       "title": "Example Title 3",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
-      "id": "3088"
+      "id": "3088",
+      "liked": 0,
+      "unliked": 1
     },
     {
       "id": "bfe9",
       "title": "News for Jenin ",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "liked": 1,
+      "unliked": 0
     },
     {
       "id": "cdb5",
       "title": "News For Tullkarm",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "liked": 1,
+      "unliked": 0
     },
     {
-      "id": "aa92",
-      "title": "Nwes for Nablus ",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat."
+      "id": "c4ca",
+      "title": "News For Nablus",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "liked": 0,
+      "unliked": 1
+    },
+    {
+      "id": "41fa",
+      "title": "State Managment ",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "liked": 0,
+      "unliked": 0
     }
   ]
 }

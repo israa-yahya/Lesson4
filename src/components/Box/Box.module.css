@@ -88,10 +88,31 @@
 }
 
 /* Styles for the trash icon */
-.trashIcon {
-  margin-right: 8px;
-}
+
 .btn{
   display: flex;
   justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .blog_item {
+    width: 100%;
+  }
+  .blog_item h2 {
+    font-size: 16px; /* Adjust heading size */
+    margin-bottom: 10px; /* Add spacing between heading and description */
+  }
+  
+  .blog_item p {
+    font-size: 14px; /* Adjust paragraph size */
+    color: #333; /* Adjust text color */
+    line-height: 1; /* Adjust line height for readability */
+  }
+  .likeButton,.unlikeButton{
+    font-size: small;
+  }
+.deleteButton{
+  font-size: xx-small;
+}
+  
+
 }
