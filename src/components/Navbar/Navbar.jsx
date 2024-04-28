@@ -1,22 +1,41 @@
-// components/Navbar.js
+// Navbar.js
 
 import React, { useState } from "react";
-import styles from "./Navbar.module.css"; // Import CSS module
+import styles from "./Navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCaretDown } from "@fortawesome/free-solid-svg-icons"; // Import faBars and faCaretDown icons
+import {
+  faBars,
+  faCaretDown,
+  faEarthAmericas,
+} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 const Navbar = () => {
-  // State variable to track the menu toggle
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [language, setLanguage] = useState("en");
+  const { t, i18n } = useTranslation(); // Initialize useTranslation hook
+  const navigate = useNavigate();
 
-  // Function to toggle the menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleBlogs = () => {
+    navigate("/");
+  };
+
+  const handleAddBlogs = () => {
+    navigate("/addBlog");
+  };
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setLanguage(lng);
+  };
+
   return (
     <nav className={styles.navbar}>
-      {/* Navbar content */}
       <a href="/">
         <img
           className={styles.logo}
@@ -24,27 +43,28 @@ const Navbar = () => {
           alt="Logo"
         />
       </a>
-      <div
-        className={`navbar_content ${isMenuOpen ? "open" : ""}`}
-        id="navbarContent"
-      >
+      <div className={styles.navbar_content} id="navbarContent">
         <div className="menu">
-          <a href="#"> CATEGORIES </a>
-          <FontAwesomeIcon icon={faCaretDown} className={styles.icon} />{" "}
-          {/* Apply icon class */}
+          <button className={styles.button} onClick={handleBlogs}>
+            {t("blogs")}
+          </button>
         </div>
         <div className="menu">
-          <a href="#"> HOME </a>
-          <FontAwesomeIcon icon={faCaretDown} className={styles.icon} />{" "}
-          {/* Apply icon class */}
+          <button className={styles.button} onClick={handleAddBlogs}>
+            {t("addBlogs")}
+          </button>
         </div>
         <div className="menu">
-          <a> ABOUT </a>
+          <FontAwesomeIcon
+            icon={faEarthAmericas}
+            className={styles.faEarthAmericas}
+            onClick={() => changeLanguage(language === "en" ? "ar" : "en")}
+          />
+          <span>{language}</span>
         </div>
       </div>
       <div className="menu-icon" onClick={toggleMenu}>
-        <FontAwesomeIcon icon={faBars} className={styles.icon} />{" "}
-        {/* Apply icon class */}
+        <FontAwesomeIcon icon={faBars} className={styles.icon} />
       </div>
     </nav>
   );

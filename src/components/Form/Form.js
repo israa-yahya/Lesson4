@@ -1,48 +1,31 @@
+// AddBlogForm.jsx
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { FormikProvider, Form, Field, ErrorMessage } from "formik";
 import styles from "./Form.module.css"; // Import CSS module
-import { validationSchema } from "./schema";
-import useForm from "../hooks/useForm";
-import BlogsServices from "./../../services/Blogs";
+import useForm from "../../hooks/useForm";
+import Title from "./../Title/Title";
+import { useTranslation } from "react-i18next";
 
 const AddBlogForm = () => {
-  const initialValues = {
-    title: "",
-    description: "",
-    liked: 0,
-    unliked: 0,
-  };
-  const onSubmitCallBack = async (values, { setSubmitting, resetForm }) => {
-    await BlogsServices.handleSubmit(values);
-    // Logic to submit form data
-    console.log("Submitted values:", values);
-    // Reset form after successful submission
-    resetForm();
-    setSubmitting(false); // Uncomment if you want to manually control submitting
-  };
-
-  const { errors, touched } = useForm(initialValues, onSubmitCallBack);
+  const { formikProps } = useForm(); // Destructure formikProps from useForm
+  const { submitForm, isSubmitting, dirty, isValid } = formikProps;
+  const { t } = useTranslation();
 
   return (
-    <div id="newsForm" className={styles.form}>
-      <h2>Add Blog:</h2>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmitCallBack}
-      >
-        {() => (
+    <>
+      <Title content={t("addBlogs")} />
+
+      <div id="newsForm" className={styles.form}>
+        <FormikProvider value={formikProps}>
           <Form>
             <div>
-              <label htmlFor="title">
-                Title (maximum 50 characters, letters only):
-              </label>
+              <label htmlFor="title">{t("title")}</label>
               <br />
               <Field
                 type="text"
                 id="title"
                 name="title"
-                className={styles.myInput}
+                className={styles.myInput} // Apply RTL-compatible style
                 required
               />
               <ErrorMessage
@@ -52,15 +35,13 @@ const AddBlogForm = () => {
               />
             </div>
             <div>
-              <label htmlFor="description">
-                Description (maximum 500 characters):
-              </label>
+              <label htmlFor="description">{t("description")}</label>
               <br />
               <Field
                 type="text"
                 id="description"
                 name="description"
-                className={styles.myInput}
+                className={styles.myInput} // Apply RTL-compatible style
                 required
               />
               <ErrorMessage
@@ -70,13 +51,18 @@ const AddBlogForm = () => {
               />
             </div>
             <br />
-            <button type="submit" className={styles.myButton}>
-              Submit
+            <button
+              type="submit"
+              className={styles.myButton} // Apply RTL-compatible style
+              disabled={!isValid || !dirty || isSubmitting}
+              onClick={submitForm}
+            >
+              {t("submit")}
             </button>
           </Form>
-        )}
-      </Formik>
-    </div>
+        </FormikProvider>
+      </div>
+    </>
   );
 };
 

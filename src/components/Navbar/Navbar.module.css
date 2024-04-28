@@ -16,13 +16,24 @@
     display: flex;
     justify-content: center; /* Center vertically */
     align-items: center; /* Center horizontally */
+    justify-content:flex-end; /* Align content to the left */
+
   }
- 
+ .faEarthAmericas{
+  color:#fff;
+  cursor: pointer;
+ }
   .navbar_content {
     line-height: 17px;
     display: flex;
-    gap: 50px;
+    margin-right: 40px;
   }
+  span{
+    color: #fff;
+    margin-left: 4px;
+  }
+  
+  
   
 
   .navbar a {
@@ -33,6 +44,26 @@
     text-transform: uppercase;
     text-decoration: none;
   }
+  /* Navbar.module.css */
+
+.button {
+  background-color: #32325d;
+  color: #8789cd;
+
+  /* color: #fff; */
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 20px;
+  /* padding: 20px; */
+}
+
+.button:hover {
+  /* color: #8789cd; */
+  color: #fff;
+
+}
+
   @media (max-width: 768px) {
    
     .navbar_content {

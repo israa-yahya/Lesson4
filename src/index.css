@@ -22,11 +22,7 @@ body {
 }
 
 
-.navbar_content {
-  line-height: 17px;
-  display: flex;
-  gap: 50px;
-}
+
 .navbar .fa-solid {
   color: white;
 }

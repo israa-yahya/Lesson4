@@ -13,9 +13,13 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
+    "css-loader": "^7.1.1",
     "formik": "^2.4.5",
+    "i18next": "^23.11.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^14.1.1",
+    "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
@@ -45,6 +49,10 @@
     ]
   },
   "devDependencies": {
-    "json-server": "^1.0.0-alpha.23"
+    "autoprefixer": "^10.4.19",
+    "json-server": "^1.0.0-alpha.23",
+    "postcss-rtl": "^2.0.0",
+    "postcss-rtlcss": "^5.1.2",
+    "webpack": "^5.91.0"
   }
 }

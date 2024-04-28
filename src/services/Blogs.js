@@ -1,6 +1,15 @@
 import axios from "axios";
 
 class BlogsServices {
+  static async fetchDataById(id) {
+    try {
+      const response = await axios.get(`http://localhost:3000/blogs/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching data by ID:", error);
+      return null;
+    }
+  }
   static async fetchData() {
     try {
       const response = await axios.get("http://localhost:3000/blogs");
@@ -24,6 +33,18 @@ class BlogsServices {
       await axios.delete(`http://localhost:3000/blogs/${id}`);
     } catch (error) {
       console.error("Error:", error);
+    }
+  }
+  static async editBlog(id, formData) {
+    const url = `http://localhost:3000/blogs/${id}`;
+    try {
+      const response = await axios.put(url, formData);
+
+      if (response.status !== 200) {
+        throw new Error("Failed to update blog post.");
+      }
+    } catch (error) {
+      console.error("Error updating blog post:", error);
     }
   }
 
