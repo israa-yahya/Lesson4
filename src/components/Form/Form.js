@@ -5,11 +5,19 @@ import styles from "./Form.module.css"; // Import CSS module
 import useForm from "../../hooks/useForm";
 import Title from "./../Title/Title";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const AddBlogForm = () => {
+  const navigate = useNavigate();
+
   const { formikProps } = useForm(); // Destructure formikProps from useForm
   const { submitForm, isSubmitting, dirty, isValid } = formikProps;
   const { t } = useTranslation();
+
+  if (isSubmitting) {
+    // Navigate to the blog page after successful submission
+    navigate("/"); // Example navigation
+  }
 
   return (
     <>

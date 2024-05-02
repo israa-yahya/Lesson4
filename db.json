@@ -1,0 +1,46 @@
+{
+  "blogsEn": [
+    {
+      "title": "News For Nabluss",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "id": "c4ca",
+      "liked": 0,
+      "unliked": 1
+    },
+    {
+      "id": "41fa",
+      "title": "State Managment ",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "liked": 0,
+      "unliked": 1
+    },
+    {
+      "id": "4046",
+      "title": "Example one",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod ligula id malesuada placerat.",
+      "liked": 0,
+      "unliked": 0
+    }
+  ],
+  "blogsAr": [
+    {
+      "title": " فالعنوان الأول",
+      "description": " لوريم إيبسوم دولور سيت أميت ,النص الافتراضي ",
+      "id": "21d6"
+    },
+    {
+      "title": "أخبار مدينة نابلس",
+      "description": " لوريم إيبسوم دولور سيت أميت ,النص الافتراضي ",
+      "id": "c4ca",
+      "liked": 0,
+      "unliked": 1
+    },
+    {
+      "title": "إدارة الدولة",
+      "description": " لوريم إيبسوم دولور سيت أميت ,النص الافتراضي ",
+      "id": "41fa",
+      "liked": 1,
+      "unliked": 0
+    }
+  ]
+}

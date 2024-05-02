@@ -1,0 +1,29 @@
+/* styles-rtl.css - RTL styles */
+.container {
+    width: 100%; /* Adjust text alignment for RTL */
+  }
+[dir] .container {
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+  }
+[dir=ltr] .container {
+    text-align: right;
+  }
+[dir=rtl] .container {
+    text-align: left;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .text {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Add more RTL styles as needed */
+  

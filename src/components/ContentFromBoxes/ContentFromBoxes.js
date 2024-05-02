@@ -1,5 +1,3 @@
-// ContentFromBoxes.js
-
 import React, { useState, useEffect } from "react";
 import Box from "./../Box/Box";
 import Pagination from "../Pagination/Pagination";
@@ -11,7 +9,7 @@ import { useTranslation } from "react-i18next"; // Import useTranslation hook
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 const ContentFromBoxes = () => {
-  const { t } = useTranslation(); // Initialize useTranslation hook
+  const { t, i18n } = useTranslation(); // Initialize useTranslation hook
 
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +22,10 @@ const ContentFromBoxes = () => {
   useEffect(() => {
     const fetchDataAsync = async () => {
       try {
-        const fetchedBlogs = await BlogsServices.fetchData();
+        const fetchedBlogs =
+          i18n.language === "en"
+            ? await BlogsServices.fetchDataEn()
+            : await BlogsServices.fetchDataAr();
         setBlogs(fetchedBlogs);
         updateTotals(fetchedBlogs);
       } catch (error) {
@@ -35,7 +36,7 @@ const ContentFromBoxes = () => {
     };
 
     fetchDataAsync();
-  }, []);
+  });
 
   // Calculate index of first and last blog for current page
   const indexOfLastBlog = currentPage * itemsPerPage;
@@ -59,18 +60,39 @@ const ContentFromBoxes = () => {
   }
 
   if (error) {
-    return <div>{t("error")}: {error}</div>; // Translate error message
+    return (
+      <div>
+        {t("error")}: {error}
+      </div>
+    ); // Translate error message
   }
+  const handleLike = (id) => {
+    if (i18n.language === "en") {
+      BlogsServices.handleLikeEn(id);
+    } else {
+      BlogsServices.handleLikeAr(id);
+    }
+  };
+
+  const handleUnLike = (id) => {
+    if (i18n.language === "en") {
+      BlogsServices.handleUnLikeEn(id);
+    } else {
+      BlogsServices.handleUnLikeAr(id);
+    }
+  };
 
   return (
     <>
       <Title content={t("currentlyBlogs")} /> {/* Translate title */}
       <div className={styles.content}>
         <div className={styles.totalLiked}>
-          <FontAwesomeIcon icon={faThumbsUp} /> {t("totalLiked")}: {totalLiked} {/* Translate total liked message */}
+          <FontAwesomeIcon icon={faThumbsUp} /> {t("totalLiked")}: {totalLiked}{" "}
+          {/* Translate total liked message */}
         </div>
         <div className={styles.totalUnliked}>
-          <FontAwesomeIcon icon={faThumbsDown} /> {t("totalUnliked")}: {totalUnliked} {/* Translate total unliked message */}
+          <FontAwesomeIcon icon={faThumbsDown} /> {t("totalUnliked")}:{" "}
+          {totalUnliked} {/* Translate total unliked message */}
         </div>
       </div>
       <section className={styles.content}>
@@ -81,8 +103,8 @@ const ContentFromBoxes = () => {
             title={blog.title}
             description={blog.description}
             liked={blog.liked}
-            onLike={() => BlogsServices.handleLike(blog.id)}
-            onUnlike={() => BlogsServices.handleUnLike(blog.id)}
+            onLike={() => handleLike(blog.id)}
+            onUnlike={() => handleUnLike(blog.id)}
           />
         ))}
       </section>

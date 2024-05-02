@@ -7,17 +7,18 @@ import {
   faTrash,
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
-import { faRocketchat } from "@fortawesome/free-brands-svg-icons";
 import BlogsServices from "./../../services/Blogs";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const Box = ({ id, title, description, liked, onLike, onUnlike }) => {
-  const { t } = useTranslation();
+const Box = ({ id, title, description="", liked, onLike, onUnlike }) => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    BlogsServices.deleteBlog(id);
+    i18n.language === "en"
+      ? BlogsServices.deleteBlogEn(id)
+      : BlogsServices.deleteBlogAr(id);
   };
 
   const handleEdit = () => {
@@ -31,26 +32,27 @@ const Box = ({ id, title, description, liked, onLike, onUnlike }) => {
   return (
     <div className={styles.blog_item}>
       <div className={styles.row}>
-        <h2 className={styles.title}>{t(title)}</h2>
+        <h2 className={styles.title}>{title}</h2>
         <button className={styles.editButton} onClick={handleEdit}>
           <FontAwesomeIcon icon={faPen} className={styles.penIcon} />
         </button>
       </div>
-      {t(description).length > 100 ? (
-        <>
-          <p className={styles.description}>
-            {t(description).substring(0, 100)}...
-          </p>
-          <button
-            className={styles.viewDetailsButton}
-            onClick={handleViewDetails}
-          >
-            <FontAwesomeIcon icon={faRocketchat} />
-          </button>
-        </>
-      ) : (
-        <p className={styles.description}>{t(description)}</p>
-      )}
+      {description.length > 100 ? (
+  <>
+    <p className={styles.description}>
+      {description.slice(0, 100)}...
+    </p>
+    <button
+      className={styles.viewDetailsButton}
+      onClick={handleViewDetails}
+    >
+      {t("readmore")}
+    </button>
+  </>
+) : (
+  <p className={styles.description}>{description}</p>
+)}
+
       <div className={styles.btn}>
         <div className={styles.likeButtons}>
           {liked ? (

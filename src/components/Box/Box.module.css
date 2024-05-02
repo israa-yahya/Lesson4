@@ -91,19 +91,19 @@
 /* Button.module.css */
 
 .viewDetailsButton {
-  padding: 5px 10px;
-  background-color: #a8a9aa;
-  border: 1px solid #a8a9aa;
-  color: #fff;
-  border-radius: 5px;
+  /* padding: 5px 10px; */
+  background-color: #fff;
+  border: 1px solid #fff;
+  /* color: ; */
+  /* border-radius: 5px; */
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 5px;
+  /* transition: background-color 0.3s ease; */
+  margin-bottom: 10px;
 }
 
-.viewDetailsButton:hover {
+/* .viewDetailsButton:hover {
   background-color: #535557;
-}
+} */
 
 /* Styles for the trash icon */
 

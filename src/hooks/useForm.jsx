@@ -1,11 +1,16 @@
-import { useFormik } from 'formik';
-import { validationSchema } from '../components/Form/schema';
-import BlogsServices from '../services/Blogs';
+import { useFormik } from "formik";
+import BlogsServices from "../services/Blogs";
+import { useTranslation } from "react-i18next";
 
-const  useForm = ()=> {
+const useForm = () => {
+  const { i18n } = useTranslation(); // Initialize useTranslation hook
+
+  // Dynamically import validation schema based on language
+  const validationSchema = i18n.language === "en"
+    ? require("../components/Form/schema").validationSchemaEn
+    : require("../components/Form/schema").validationSchemaAr;
 
   const initialValues = {
-
     title: "",
     description: "",
     liked: 0,
@@ -14,22 +19,24 @@ const  useForm = ()=> {
 
   const handleSubmit = async (values, formikBag) => {
     try {
-      await BlogsServices.handleSubmit(values);
+      i18n.language === "en"
+        ? await BlogsServices.handleSubmitEn(values)
+        : await BlogsServices.handleSubmitAr(values);
       formikBag.resetForm();
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
 
   const formikProps = useFormik({
     initialValues,
     onSubmit: handleSubmit,
-    validationSchema,
+    validationSchema, // Use the dynamically imported validation schema
   });
 
   return {
-   formikProps,
+    formikProps,
   };
-}
+};
 
 export default useForm;

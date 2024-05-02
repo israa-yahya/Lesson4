@@ -2,7 +2,16 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:css": "postcss src/styles/styles.css -o dist/styles/styles.css",
+    "build:css:rtl": "postcss src/styles/styles-rtl.css -o dist/styles/styles-rtl.css"
+  },
   "dependencies": {
+    "-": "^0.0.1",
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
@@ -16,19 +25,19 @@
     "css-loader": "^7.1.1",
     "formik": "^2.4.5",
     "i18next": "^23.11.2",
+    "i18next-browser-languagedetector": "^7.2.1",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.1.1",
     "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
+    "save-dev": "^0.0.1-security",
     "web-vitals": "^2.1.4",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
     "yup": "^1.4.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +60,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "json-server": "^1.0.0-alpha.23",
+    "postcss-loader": "^8.1.1",
     "postcss-rtl": "^2.0.0",
     "postcss-rtlcss": "^5.1.2",
     "webpack": "^5.91.0"

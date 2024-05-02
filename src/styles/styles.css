@@ -1,0 +1,22 @@
+/* styles.css - LTR styles */
+.container {
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    text-align: left;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .text {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Add more LTR styles as needed */
+  
